@@ -1,0 +1,291 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*CUSTOM PROPERTIES*/
+:root {
+  --ff-primary: monospace, sans-serif;
+
+  --fw-reg: 300;
+  --fw-bold: 500;
+
+  --clr-light: #fff;
+  --clr-dark: #454444;
+  --clr-accent: #fff;
+  --clr-accent2: rgb(243, 235, 224);
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
+    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+}
+
+/*GENERAL PROPERTIES*/
+body {
+  margin: 0;
+  color: var(--clr-dark);
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-reg);
+}
+
+p {
+  line-height: 1.75em;
+}
+
+/*TOP TAGLINE*/
+
+.top-tagline {
+  margin: 0;
+  padding: 0.5em 0;
+  background: var(--clr-accent2);
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.top-tagline p {
+  margin: 0;
+}
+
+/*CONTAINER OF NAVBAR AND LOGO*/
+.container {
+  padding: 1em 0 1em 0;
+  text-align: center;
+  background: var(--clr-accent);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  box-shadow: 0 2px 5px -2px gray;
+}
+
+/* LOGO STYLES*/
+.logo {
+  font-family: "Raleway";
+  font-size: 0.75rem;
+}
+
+.logo h1 {
+  display: inline;
+}
+
+.homepage-link {
+  text-decoration: none;
+  color: var(--clr-dark);
+  font-family: var(--ff-primary);
+}
+
+/*NAVBAR STYLES*/
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: black;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+.nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--clr-accent);
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-item {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.nav-link {
+  color: var(--clr-dark);
+  text-decoration: none;
+  font-size: 0.75 rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  /*when it's no longer checked it will use this transition*/
+}
+
+.nav-link:hover {
+  color: var(--clr-accent2);
+}
+
+.nav-toggle:checked ~ nav {
+  /*the tilde is looking for a nav that is a sibloing of nav-toggle*/
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav .nav-link {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 300ms;
+  /*when hamburger is checked it will use this transition*/
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / span 1;
+  }
+
+  .nav {
+    all: unset;
+    grid-column: 3/4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav .nav-link {
+    display: flex;
+    opacity: 1;
+    position: relative;
+  }
+
+  .nav .nav-list {
+    display: flex;
+  }
+
+  .nav .nav-item {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+
+  .nav .nav-link::before {
+    content: "";
+    display: block;
+    /*height: 5px;*/
+    background: black;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform ease-in-out 250ms;
+  }
+
+  .nav .nav-link::before {
+    transform: scale(1, 1);
+  }
+}
+
+/*MAIN CONTENT*/
+.main-content {
+  margin: 0;
+}
+
+.main-content-item {
+  padding: 4em 2em;
+}
+
+.main-content-item-info {
+  justify-content: center;
+}
+
+.main-content-item-img1,
+.main-content-item-img2 {
+  width: 40%;
+  margin: 4em;
+}
+
+@media screen and (min-width: 800px) {
+  .main-content-item-info {
+    display: flex;
+  }
+}
+
+.item-1 {
+  margin-top: 0;
+}
+
+.item-2 {
+  background-color: var(--clr-accent2);
+  margin: 0;
+}
+
+.main-content-item-heading {
+  margin: 0;
+}
+
+/*FOOTER*/
+
+footer {
+  padding: 2em;
+  margin-bottom: 0;
+  background-color: rgb(243, 243, 243);
+}
+
+.footer-info {
+  margin: 0;
+  font-size: var(--fs-h3);
+  display: flex;
+  justify-content: space-around;
+}
+
+.copyright {
+  text-align: center;
+}
+
+.social a {
+  color: var(--clr-dark);
+  text-decoration: none;
+}
+
+.social a:hover {
+  opacity: 0.8;
+}

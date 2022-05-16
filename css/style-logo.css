@@ -1,0 +1,46 @@
+/* logo styles*/
+.logo {
+  font-family: 'Raleway';
+  display: grid;
+  justify-content: start;
+  padding: 0;
+  align-content: center;
+  grid-template-columns: 30% 10% 30%;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "yaa nyansapo akua"
+    "consulting consulting consulting";
+}
+
+.logo-yaa,
+.logo-akua {
+  font-size: .5rem;
+  text-align: center;
+  border: black 2
+}
+
+.logo-yaa {
+  grid-area: yaa;
+}
+
+.logo-akua {
+  grid-area: akua;
+}
+
+.logo-consulting {
+  grid-area: consulting;
+  text-align: center;
+  font-size: .5rem;
+  margin-top:0;
+  padding: 0;
+}
+
+.logo-image {
+  grid-area: nyansapo;
+  self-align: center;
+  height: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 45px;
+
+}
